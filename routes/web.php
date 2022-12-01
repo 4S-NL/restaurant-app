@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'menu'])->name('menu');
 Route::post('order', [OrderController::class, 'store'])->name('store');
-
+Route::post('payment', [PaymentController::class, 'index'])->name('payment');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

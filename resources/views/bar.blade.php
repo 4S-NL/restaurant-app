@@ -12,7 +12,7 @@
                     <h2 class="text-xl">Te maken bestellingen</h2>
 
                     @foreach($orders as $order)
-                    <div class="mb-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div class="order-card mb-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tafel {{ $order->seat->number }}</h5>
                         </a>
@@ -22,9 +22,9 @@
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
 
                             <ul>
-                                @foreach($order->consumables as $consumable)
-                                    @if($consumable->category->name == 'drank')
-                                        <li> {{ $consumable->name }} </li>
+                                @foreach($order->consumables->groupBy('name') as $key => $value)
+                                    @if($value[0]->category->name == 'drank')
+                                        <li> {{ $key }} x {{ count($value) }} </li>
                                     @endif
                                 @endforeach
                             </ul>

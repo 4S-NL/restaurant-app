@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.2/dist/sketchy/bootstrap.min.css"></head>
 <body>
     <div class="container">
-        <form action="{{ route('store') }}" method="post">
+        <form action="{{ route('payment') }}" method="post">
         <div class="row mb-4">
             @if($errors->any())
                 @foreach($errors->all() as $error)
