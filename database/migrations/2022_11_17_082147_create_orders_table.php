@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('seat_id')
                 ->references('id')
                 ->on('seats');
-
+            $table->timestamp('dishes_ready_at')->nullable();
+            $table->timestamp('drinks_ready_at')->nullable();
             $table->timestamps();
         });
     }

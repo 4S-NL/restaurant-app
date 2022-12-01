@@ -33,5 +33,17 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order) {
 
+        if($request->type == 'dish') {
+            $order->update([
+                'dishes_ready_at' => now()
+            ]);
+
+        } else {
+            $order->update([
+                'drinks_ready_at' => now()
+            ]);
+        }
+
+        return back();
     }
 }

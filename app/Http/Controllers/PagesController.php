@@ -25,14 +25,18 @@ class PagesController extends Controller
     }
 
     public function bar() {
-        $orders = Order::where('created_at', '>', \Carbon\Carbon::today())->get();
+        $orders = Order::where('created_at', '>', \Carbon\Carbon::today())
+                        ->whereNull('drinks_ready_at')->get();
+
         return view('bar', [
             'orders'=> $orders
         ]);
     }
 
     public function keuken() {
-        $orders = Order::where('created_at', '>', \Carbon\Carbon::today())->get();
+        $orders = Order::where('created_at', '>', \Carbon\Carbon::today())
+            ->whereNull('dishes_ready_at')->get();
+
         return view('keuken', [
             'orders' => $orders
         ]);
