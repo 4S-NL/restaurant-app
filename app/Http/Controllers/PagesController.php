@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Seat;
 use App\Models\Consumable;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use PDO;
 
@@ -20,6 +21,20 @@ class PagesController extends Controller
             'categories'    => $categories,
             'seats'         => $seats,
             'consumableCount' => $consumableCount
+        ]);
+    }
+
+    public function bar() {
+        $orders = Order::where('created_at', '>', \Carbon\Carbon::today())->get();
+        return view('bar', [
+            'orders'=> $orders
+        ]);
+    }
+
+    public function keuken() {
+        $orders = Order::where('created_at', '>', \Carbon\Carbon::today())->get();
+        return view('keuken', [
+            'orders' => $orders
         ]);
     }
 }

@@ -25,6 +25,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('bar', [PagesController::class, 'bar'] )->name('bar');
+    Route::get('keuken', [PagesController::class, 'keuken'])->name('keuken');
+    Route::put('order/{order}', [OrderController::class, 'update'])->name('order.update');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

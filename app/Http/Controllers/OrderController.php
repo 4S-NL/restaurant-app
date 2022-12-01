@@ -13,6 +13,8 @@ class OrderController extends Controller
         // valideren
         // een table id (bestaand uit db)
         // een of meerdere conusmables moeten besteld zijn.
+        $this->validate($request, [
+        ]);
 
         $order = Order::create([
             'seat_id' => $request->table_id
@@ -26,6 +28,10 @@ class OrderController extends Controller
         }
 
         return back()->with('message', 'Bestelling succesvol! U wordt zo spoedig mogelijk bediend!');
+
+    }
+
+    public function update(Request $request, Order $order) {
 
     }
 }

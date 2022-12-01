@@ -10,6 +10,15 @@
     <div class="container">
         <form action="{{ route('store') }}" method="post">
         <div class="row mb-4">
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            @endif
+
+            @if(session('message'))
+                <p class="alert alert-success">{{session('message')}}</p>
+            @endif
             <h1>Menukaart</h1>
             <div>
                 <p>Selecteer uw tafelnummer</p>
